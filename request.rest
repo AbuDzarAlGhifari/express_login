@@ -3,12 +3,12 @@ GET http://localhost:7000/auth
 
 
 ###
-POST http://localhost:7000/auth
+POST https://simple-log-eta.vercel.app/auth
 content-type: application/json
 
 {
-    "name": "manda",
-    "password": "telkomsel"
+    "name": "nisa",
+    "password": "jajan"
 }
 
 ###

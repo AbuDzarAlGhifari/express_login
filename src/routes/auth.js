@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.get('/', authController.getAllUsers)
 
-router.post('/', authController.register)
+router.post('/reg', authController.register)
 
 router.post('/login', authController.login)
 
