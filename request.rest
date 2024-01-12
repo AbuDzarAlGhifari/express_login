@@ -1,0 +1,21 @@
+###
+GET http://localhost:7000/auth
+
+
+###
+POST http://localhost:7000/auth
+content-type: application/json
+
+{
+    "name": "manda",
+    "password": "telkomsel"
+}
+
+###
+POST http://localhost:7000/auth/login
+content-type: application/json
+
+{
+    "name": "mana",
+    "password": "telkomsel"
+}
