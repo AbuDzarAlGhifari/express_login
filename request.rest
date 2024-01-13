@@ -16,8 +16,8 @@ POST http://localhost:7000/auth/login
 content-type: application/json
 
 {
-    "name": "nisa",
-    "password": "jajan"
+    "name": "takari",
+    "password": "butuhloker"
 }
   
 ###
@@ -28,10 +28,10 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5hbWUiO
 ###
 POST http://localhost:7000/auth/logout
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5hbWUiOiJuaXNhIn0sImlhdCI6MTcwNTEwODU5OCwiZXhwIjoxNzA1MTEyMTk4fQ.KrUjiY3XxLpE4VY118xgd621D6Mx4Z_evBCKX6ep-8s
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5hbWUiOiJ0YWthcmkifSwiaWF0IjoxNzA1MTEwNjc0LCJleHAiOjE3MDUxMTQyNzR9.x45_ggufWC2SbCSLg06-oGphespxqlkMdSHnIx85Sus
 
 
 ###
 GET http://localhost:7000/auth/user
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5hbWUiOiJuaXNhIn0sImlhdCI6MTcwNTEwODU5OCwiZXhwIjoxNzA1MTEyMTk4fQ.KrUjiY3XxLpE4VY118xgd621D6Mx4Z_evBCKX6ep-8s
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5hbWUiOiJ0YWthcmkifSwiaWF0IjoxNzA1MTEwNjc0LCJleHAiOjE3MDUxMTQyNzR9.x45_ggufWC2SbCSLg06-oGphespxqlkMdSHnIx85Sus
