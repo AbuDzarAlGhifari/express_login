@@ -1,61 +1,30 @@
-const AuthModel = require('../models/auth')
+// const { registerUser, loginUser, addToBlacklist, isTokenBlacklisted } = require('../models/auth');
+// const jwt = require('jsonwebtoken');
 
-const getAllUsers = async (req, res) => {
-    try {
-        const [data] = await AuthModel.getAllUsers();
+// exports.register = (req, res) => {
+//   const { name, password } = req.body;
+//   registerUser(name, password, (err, result) => {
+//     if (err) {
+//       console.error('Error registering user:', err);
+//       return res.status(500).json({ error: 'Internal Server Error' });
+//     }
+//     res.status(201).json({ message: 'User registered successfully' });
+//   });
+// };
 
-        res.json({
-            message: 'GET all users success',
-            data : data
-        })
-    } catch (error) {
-        res.status(500).json({
-            message: 'Server Error',
-            serverMessage: error,
-        })
-    }
-}
-
-
-const register = async (req, res) => {
-    const {body} = req
-    try {
-        await AuthModel.register(body)
-        res.json({
-            message: 'register success',
-            data: body
-        })
-
-    } catch (error) {
-        res.status(500).json({
-            message: 'Server Error',
-            serverMessage: error,
-        })
-    }
-}
-
-const login = async (req, res) => {
-    const { name, password } = req.body;
-    try {
-        const [users] = await AuthModel.login(name, password);
-
-        if (users.length > 0) {
-            res.json({ message: 'Login successful' });
-        } else {
-            res.status(401).json({ error: 'Invalid credentials' });
-        }
-    } catch (error) {
-        console.error('Error during login:', error.message);
-        res.status(500).json({ error: 'Internal Server Error' });
-    }
-}
-
-
-module.exports ={
-    getAllUsers,
-    register,
-    login,
-}
-
-
-
+// exports.login = (req, res) => {
+//   const { name, password } = req.body;
+//   loginUser(name, password, (err, results) => {
+//     if (err) {
+//       console.error('Error during login:', err);
+//       return res.status(500).json({ error: 'Internal Server Error' });
+//     }
+//     if (results.length > 0) {
+//       const user = { name };
+//       const token = jwt.sign({ user }, process.env.JWT_SECRET, { expiresIn: '1h', algorithm: 'HS256' });
+//       res.status(200).json({ token });
+//     } else {
+//       res.status(401).json({ error: 'Invalid credentials' });
+//     }
+//   });
+// };

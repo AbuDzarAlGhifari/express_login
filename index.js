@@ -1,29 +1,24 @@
-require('dotenv').config()
+require('dotenv').config();
+const express = require('express');
+const bodyParser = require('body-parser');
+const authRoutes = require('./src/routes/auth');
 
-const express = require('express')
+const app = express();
+const PORT = process.env.PORT || 5000;
 
-const PORT = process.env.PORT || 5000
+app.use(bodyParser.json());
 
-const authRoutes = require('./src/routes/auth')
-
-const middlewareLogRequest = require('./src/middleware/logs')
-
-const app = express()
-
-app.use(express.json())
-
+// CORS middleware to allow requests from all origins
 app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-    next();
-  });
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+  next();
+});
 
-app.use(middlewareLogRequest)
-
-app.use('/auth', authRoutes)
+app.use('/auth', authRoutes);
 
 
 app.listen(PORT, () => {
-    console.log(`Example app listening on port ${PORT}!`)
-})
+  console.log(`Server is running on http://localhost:${PORT}`);
+});

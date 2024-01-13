@@ -1,26 +1,30 @@
-const dbPool = require('../config/database')
+const db = require('../config/database');
 
-const getAllUsers = () => {
-    const SQLQuery = 'SELECT * FROM auth'
-
-    return dbPool.execute(SQLQuery)
+function registerUser(name, password, callback) {
+  db.query(`INSERT INTO auth (name, password) 
+            VALUE ('${name}', '${password}')`, 
+            [name, password], callback);
 }
 
-
-const register = (body) => {
-    const SQLQuery = `  INSERT INTO auth (name, password) 
-                        VALUE ('${body.name}', '${body.password}')`
-    
-    return dbPool.execute(SQLQuery)
+function loginUser(name, password, callback) {
+  db.query(`SELECT * FROM auth WHERE name='${name}' AND password='${password}'`,
+            [name, password], callback);
 }
 
-const login = (name, password) => {
-    const SQLQuery = `SELECT * FROM auth WHERE name='${name}' AND password='${password}'`;
-    return dbPool.execute(SQLQuery);
+const tokenBlacklist = new Set();
+
+function addToBlacklist(expirationTime) {
+  tokenBlacklist.add(expirationTime);
 }
 
-module.exports = {
-    getAllUsers,
-    register,
-    login,
+function isTokenBlacklisted(expirationTime) {
+  return tokenBlacklist.has(expirationTime);
 }
+
+module.exports = { 
+  registerUser, 
+  loginUser,
+  addToBlacklist,
+  isTokenBlacklisted
+};
+
